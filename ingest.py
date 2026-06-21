@@ -18,6 +18,9 @@ def load_faq_data():
 
         documents.extend(course_data)
 
+    for doc in documents:
+        doc["doc_id"] = doc.pop("id")
+
     return documents
 
 
@@ -27,4 +30,4 @@ def build_index(documents):
         keyword_fields=['course']
     )
     index.fit(documents)
-    return index 
+    return index
